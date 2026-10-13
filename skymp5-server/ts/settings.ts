@@ -20,7 +20,7 @@ export interface DiscordAuthSettings {
 export class Settings {
   masterKey: string | null = null;
   port = 7777;
-  maxPlayers = 100;
+  maxPlayers = 500;
   master: string = "https://gateway.skymp.net";
   name = 'Yet Another Server';
   gamemodePath = '...';
@@ -29,11 +29,11 @@ export class Settings {
   offlineMode = false;
   startPoints = [
     {
-      pos: [133857, -61130, 14662],
+      pos: [18595, -47038, -138],
       worldOrCell: '0x3c',
       angleZ: 72,
     },
-  ];
+  ]; // Riverwood
   discordAuth: DiscordAuthSettings | null = null;
 
   allSettings: Record<string, unknown> | null = null;
