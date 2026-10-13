@@ -1,15 +1,5 @@
 #!/bin/sh
 
-if [ ! -f .env ]; then
-    echo "Error: .env not found in $(pwd)"
-    echo "Create .env with GITHUB_TOKEN=your_token"
-    exit 1
-fi
-
-set -a
-source .env
-set +a
-
 eecho() {
   echo "$@" >&2
 }
