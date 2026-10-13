@@ -1,10 +1,11 @@
-build
+.env
 .clang-tidy
 .linter
-node_modules
 .vscode
 .cache
 .vs
+build
+node_modules
 
 # vim
 .*.swp
