@@ -21,8 +21,8 @@ export class Settings {
   masterKey: string | null = null;
   port = 7777;
   maxPlayers = 500;
-  master: string = "https://gateway.skymp.net";
-  name = 'Yet Another Server';
+  master: string = "";
+  name = 'SkyMP5 Server';
   gamemodePath = '...';
   loadOrder = new Array<string>();
   dataDir = './data';
