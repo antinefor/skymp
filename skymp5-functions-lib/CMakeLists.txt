@@ -12,24 +12,23 @@ if(BUILD_GAMEMODE)
 
   set(GAMEMODE_JS_DEST_DIR "${CMAKE_BINARY_DIR}/dist/server")
   set(GAMEMODE_REPO_URL "https://${GITHUB_TOKEN}:x-oauth-basic@github.com/${GAMEMODE_REPO_OWNER}/${GAMEMODE_REPO_NAME}.git")
+  set(YARN_CMAKE_PATH "${CMAKE_SOURCE_DIR}/cmake/yarn.cmake")
 
   # Pass variables to the download script.
   set(SCRIPT_PATH "${CMAKE_CURRENT_LIST_DIR}/download-and-build-with-prs.cmake")
-  configure_file(${SCRIPT_PATH} ${CMAKE_BINARY_DIR}/download-and-build-with-prs.cmake ESCAPE_QUOTES)
+  configure_file(${SCRIPT_PATH} ${CMAKE_BINARY_DIR}/download-and-build-gamemode.cmake ESCAPE_QUOTES)
 
-  set(source download-and-build-with-prs.cmake)
+  set(source download-and-build-gamemode.cmake)
 
   add_custom_target(skymp5-functions-lib ALL
-    SOURCES ${source}
+    SOURCES ${CMAKE_BINARY_DIR}/${source}
     COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_BINARY_DIR}/dist/server
-    COMMAND ${CMAKE_COMMAND} -E remove_directory ${CMAKE_CURRENT_BINARY_DIR}/${GAMEMODE_REPO_NAME}-${GAMEMODE_BRANCH}
     COMMAND ${CMAKE_COMMAND} -E env DOWNLOAD_NO_PROGRESS=1
             ${CMAKE_COMMAND} -P ${CMAKE_BINARY_DIR}/${source}
     COMMENT "Downloading & building gamemode repo..."
   )
 else()
   add_custom_target(skymp5-functions-lib ALL
-    SOURCES ${source}
     COMMAND ${CMAKE_COMMAND} -E echo "Building skymp5-functions-lib is disabled. To enable it, set BUILD_GAMEMODE to ON."
     COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_BINARY_DIR}/dist/server
     COMMAND ${CMAKE_COMMAND} -E true > ${CMAKE_BINARY_DIR}/dist/server/gamemode.js
