@@ -35,6 +35,6 @@ message(STATUS "Built gamemode.js")
 
 message(STATUS "Installing gamemode.js")
 
-file(COPY ${CMAKE_BINARY_DIR}/gamemode-sources/build/gamemode.js DESTINATION "${GAMEMODE_JS_DEST_DIR}")
+file(COPY ${CMAKE_BINARY_DIR}/gamemode-sources/build/dist/server/gamemode.js DESTINATION "${GAMEMODE_JS_DEST_DIR}")
 
 message(STATUS "Installed gamemode.js")
